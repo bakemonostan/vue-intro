@@ -27,8 +27,15 @@
         <a :href="link">Click</a><br><br>
         <input type="text" v-model="product" @keyup.enter="test('its' + ' ' + product)"><br><br>
         <button @click="toggleBooty"> Feed me Booty</button>
-        <p v-if="leShow">Big booty</p>
+        <p v-if="leShow">Big booty</p><br><br>
+
+        <div>
+            <h3>Custom Component</h3>
+            <test-comp />
+        </div>
     </div>
+
+
 
 
     <!-- Import App -->
@@ -54,6 +61,37 @@
                 }
             }
         });
+
+        app.component('test-comp', {
+            template: `
+            <h1>{{test}}</h1>
+          <form @submit.prevent=handleSubmit>
+
+                <label for="name">
+                    <p>name</p>
+                    <input type="text" v-model='name'>
+                </label><br/>
+
+                    <label for="password">
+                        <p>pass</p>
+                            <input type="password" v-model='pass'>
+                    </label>
+                    <button>Submit Mortal</button>
+            </form>
+            `,
+            data() {
+                return {
+                    test: 'le test le form',
+                    name: '',
+                    pass: '',
+                }
+            },
+            methods: {
+                handleSubmit() {
+                    console.log(this.name, this.pass)
+                }
+            }
+        })
         app.mount('#app')
 
     </script>
