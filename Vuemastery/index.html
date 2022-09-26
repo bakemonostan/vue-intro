@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Import Vue js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            background: hsl(0, 15%, 78%);
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <h1>{{product}}</h1>
+        <p>{{description}}</p>
+        <a :href="link">Click</a><br><br>
+        <input type="text" v-model="product" @keyup.enter="test('its' + ' ' + product)"><br><br>
+        <button @click="toggleBooty"> Feed me Booty</button>
+        <p v-if="leShow">Big booty</p>
+    </div>
+
+
+    <!-- Import App -->
+    <!-- <script src="./index.js"></script> -->
+    <!-- Mount App -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    product: 'Corn',
+                    description: "It's cooorrrrnnnn!!",
+                    link: 'https://roadmap.sh/vue',
+                    leShow: false,
+                }
+            },
+            methods: {
+                toggleBooty() {
+                    this.leShow = !this.leShow;
+                },
+
+                test(para) {
+                    console.log(para);
+                }
+            }
+        });
+        app.mount('#app')
+
+    </script>
+</body>
+
+</html>
